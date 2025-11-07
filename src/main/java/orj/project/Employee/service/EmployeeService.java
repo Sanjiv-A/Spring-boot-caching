@@ -16,7 +16,7 @@ public class EmployeeService {
 
     @Autowired
     private EmployeeRepository employeeRepository;
-    @Cacheable(value = "employees", key = "#id")
+    @CachePut(value = "employees", key = "#result.id")
     public Employee createEmployee(Employee employee) {
         return employeeRepository.save(employee);
     }

@@ -13,7 +13,10 @@ import java.io.Serializable;
 //@AllArgsConstructor
 //@NoArgsConstructor
 //@ToString
-public class Employee  {
+public class Employee implements  Serializable  {
+    private static final long serialVersionUID = 1L;
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id ;
@@ -49,5 +52,10 @@ public class Employee  {
     public String toString() {
         return "Employee{id=" + id + ", name=" + name + "}";
     }
+
+    @ManyToOne
+    @JoinColumn(name = "department_id", nullable = false)
+    private Department department;
+
 
 }
